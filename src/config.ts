@@ -5,6 +5,10 @@ export const config = {
 	},
 	github: {
 		url: 'https://github.com/hexcuit',
+		repos: {
+			server: 'hexcuit/server',
+			bot: 'hexcuit/discord-bot',
+		},
 	},
 	theme: {
 		storageKey: 'hexcuit-theme',
