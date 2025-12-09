@@ -1,6 +1,5 @@
 import { Button } from '~/components/ui/button'
-
-const DISCORD_INVITE_URL = 'https://discord.com/oauth2/authorize?client_id=1413060641811337256'
+import { config } from '~/config'
 
 export const Hero = () => {
 	return (
@@ -11,7 +10,7 @@ export const Hero = () => {
 					League of Legendsのランク管理とチームバランシング機能を提供するDiscord Bot
 				</p>
 				<Button asChild size='lg'>
-					<a href={DISCORD_INVITE_URL} target='_blank' rel='noopener noreferrer'>
+					<a href={config.discord.inviteUrl} target='_blank' rel='noopener noreferrer'>
 						Botを招待する
 					</a>
 				</Button>

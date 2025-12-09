@@ -1,9 +1,8 @@
 import { Link } from '@tanstack/react-router'
 import { Github } from 'lucide-react'
 import { Button } from '~/components/ui/button'
+import { config } from '~/config'
 import { ThemeToggle } from './theme-toggle'
-
-const GITHUB_URL = 'https://github.com/hexcuit'
 
 export const Header = () => {
 	return (
@@ -17,7 +16,7 @@ export const Header = () => {
 						Home
 					</Link>
 					<Button variant='ghost' size='icon' asChild>
-						<a href={GITHUB_URL} target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
+						<a href={config.github.url} target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
 							<Github className='h-5 w-5' />
 						</a>
 					</Button>

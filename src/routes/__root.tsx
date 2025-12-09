@@ -6,6 +6,7 @@ import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
 import { Header } from '~/components/layout'
 import { NotFound } from '~/components/not-found'
 import { ThemeProvider } from '~/components/theme-provider'
+import { config } from '~/config'
 import appCss from '~/styles/app.css?url'
 import { seo } from '~/utils/seo'
 
@@ -41,7 +42,7 @@ function RootDocument({ children }: { children: ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className='min-h-screen bg-background text-foreground'>
-				<ThemeProvider defaultTheme='system' storageKey='hexcuit-theme'>
+				<ThemeProvider defaultTheme={config.theme.defaultTheme} storageKey={config.theme.storageKey}>
 					<Header />
 					<main>{children}</main>
 				</ThemeProvider>

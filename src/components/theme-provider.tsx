@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from 'react'
+import { config } from '~/config'
 
 type Theme = 'dark' | 'light' | 'system'
 
@@ -17,8 +18,8 @@ const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undef
 
 export const ThemeProvider = ({
 	children,
-	defaultTheme = 'system',
-	storageKey = 'hexcuit-theme',
+	defaultTheme = config.theme.defaultTheme,
+	storageKey = config.theme.storageKey,
 }: ThemeProviderProps) => {
 	const [theme, setTheme] = useState<Theme>(() => {
 		if (typeof window === 'undefined') return defaultTheme
