@@ -1,5 +1,7 @@
 import type { ErrorComponentProps } from '@tanstack/react-router'
 import { ErrorComponent, Link, rootRouteId, useMatch, useRouter } from '@tanstack/react-router'
+import { Button } from '~/components/ui/button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
 
 export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
 	const router = useRouter()
@@ -11,38 +13,39 @@ export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
 	console.error('DefaultCatchBoundary Error:', error)
 
 	return (
-		<div className='min-w-0 flex-1 p-4 flex flex-col items-center justify-center gap-6'>
-			<ErrorComponent error={error} />
-			<div className='flex gap-2 items-center flex-wrap'>
-				<button
-					type='button'
-					onClick={() => {
-						router.invalidate()
-					}}
-					className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold`}
-				>
-					Try Again
-				</button>
-				{isRoot ? (
-					<Link
-						to='/'
-						className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold`}
-					>
-						Home
-					</Link>
-				) : (
-					<Link
-						to='/'
-						className={`px-2 py-1 bg-gray-600 dark:bg-gray-700 rounded-sm text-white uppercase font-extrabold`}
-						onClick={(e) => {
-							e.preventDefault()
-							window.history.back()
+		<div className='min-h-[50vh] flex items-center justify-center p-4'>
+			<Card className='max-w-md w-full'>
+				<CardHeader>
+					<CardTitle className='text-destructive'>エラーが発生しました</CardTitle>
+				</CardHeader>
+				<CardContent>
+					<ErrorComponent error={error} />
+				</CardContent>
+				<CardFooter className='flex gap-2'>
+					<Button
+						variant='outline'
+						onClick={() => {
+							router.invalidate()
 						}}
 					>
-						Go Back
-					</Link>
-				)}
-			</div>
+						再試行
+					</Button>
+					{isRoot ? (
+						<Button asChild>
+							<Link to='/'>ホームへ</Link>
+						</Button>
+					) : (
+						<Button
+							variant='secondary'
+							onClick={() => {
+								window.history.back()
+							}}
+						>
+							戻る
+						</Button>
+					)}
+				</CardFooter>
+			</Card>
 		</div>
 	)
 }

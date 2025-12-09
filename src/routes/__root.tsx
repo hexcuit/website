@@ -1,8 +1,9 @@
 /// <reference types="vite/client" />
-import { createRootRoute, HeadContent, Link, Scripts } from '@tanstack/react-router'
+import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import type * as React from 'react'
+import type { ReactNode } from 'react'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
+import { Header } from '~/components/layout'
 import { NotFound } from '~/components/NotFound'
 import appCss from '~/styles/app.css?url'
 import { seo } from '~/utils/seo'
@@ -32,29 +33,14 @@ export const Route = createRootRoute({
 	shellComponent: RootDocument,
 })
 
-function RootDocument({ children }: { children: React.ReactNode }) {
+function RootDocument({ children }: { children: ReactNode }) {
 	return (
 		<html lang='ja'>
 			<head>
 				<HeadContent />
 			</head>
-			<body>
-				<header className='border-b border-gray-200 dark:border-gray-800'>
-					<nav className='max-w-5xl mx-auto px-4 py-4 flex items-center justify-between'>
-						<Link to='/' className='text-xl font-bold'>
-							Hexcuit
-						</Link>
-						<div className='flex gap-6'>
-							<Link
-								to='/'
-								activeProps={{ className: 'text-blue-600 dark:text-blue-400' }}
-								activeOptions={{ exact: true }}
-							>
-								Home
-							</Link>
-						</div>
-					</nav>
-				</header>
+			<body className='min-h-screen bg-background text-foreground'>
+				<Header />
 				<main>{children}</main>
 				<TanStackRouterDevtools position='bottom-right' />
 				<Scripts />
