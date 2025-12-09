@@ -10,6 +10,21 @@ import { config } from '~/config'
 import appCss from '~/styles/app.css?url'
 import { seo } from '~/utils/seo'
 
+const themeScript = `
+(function() {
+  const storageKey = '${config.theme.storageKey}';
+  const theme = localStorage.getItem(storageKey);
+  const root = document.documentElement;
+
+  if (theme === 'dark' || theme === 'light') {
+    root.classList.add(theme);
+  } else {
+    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    root.classList.add(systemTheme);
+  }
+})();
+`
+
 export const Route = createRootRoute({
 	head: () => ({
 		meta: [
@@ -28,6 +43,11 @@ export const Route = createRootRoute({
 		links: [
 			{ rel: 'stylesheet', href: appCss },
 			{ rel: 'icon', href: '/favicon.ico' },
+		],
+		scripts: [
+			{
+				children: themeScript,
+			},
 		],
 	}),
 	errorComponent: DefaultCatchBoundary,
