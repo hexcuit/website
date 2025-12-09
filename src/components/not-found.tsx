@@ -7,7 +7,7 @@ interface NotFoundProps {
 	children?: ReactNode
 }
 
-export function NotFound({ children }: NotFoundProps) {
+export const NotFound = ({ children }: NotFoundProps) => {
 	return (
 		<div className='min-h-[50vh] flex items-center justify-center p-4'>
 			<Card className='max-w-md w-full text-center'>

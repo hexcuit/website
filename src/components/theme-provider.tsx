@@ -15,7 +15,11 @@ interface ThemeProviderState {
 
 const ThemeProviderContext = createContext<ThemeProviderState | undefined>(undefined)
 
-export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 'hexcuit-theme' }: ThemeProviderProps) {
+export const ThemeProvider = ({
+	children,
+	defaultTheme = 'system',
+	storageKey = 'hexcuit-theme',
+}: ThemeProviderProps) => {
 	const [theme, setTheme] = useState<Theme>(() => {
 		if (typeof window === 'undefined') return defaultTheme
 		return (localStorage.getItem(storageKey) as Theme) || defaultTheme
@@ -46,7 +50,7 @@ export function ThemeProvider({ children, defaultTheme = 'system', storageKey = 
 	return <ThemeProviderContext.Provider value={value}>{children}</ThemeProviderContext.Provider>
 }
 
-export function useTheme() {
+export const useTheme = () => {
 	const context = useContext(ThemeProviderContext)
 
 	if (context === undefined) {

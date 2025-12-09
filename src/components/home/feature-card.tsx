@@ -5,7 +5,7 @@ interface FeatureCardProps {
 	description: string
 }
 
-export function FeatureCard({ title, description }: FeatureCardProps) {
+export const FeatureCard = ({ title, description }: FeatureCardProps) => {
 	return (
 		<Card>
 			<CardHeader>

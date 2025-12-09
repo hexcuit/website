@@ -3,7 +3,7 @@ import { ErrorComponent, Link, rootRouteId, useMatch, useRouter } from '@tanstac
 import { Button } from '~/components/ui/button'
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '~/components/ui/card'
 
-export function DefaultCatchBoundary({ error }: ErrorComponentProps) {
+export const DefaultCatchBoundary = ({ error }: ErrorComponentProps) => {
 	const router = useRouter()
 	const isRoot = useMatch({
 		strict: false,

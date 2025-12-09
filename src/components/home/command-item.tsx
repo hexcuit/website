@@ -5,7 +5,7 @@ interface CommandItemProps {
 	description: string
 }
 
-export function CommandItem({ command, description }: CommandItemProps) {
+export const CommandItem = ({ command, description }: CommandItemProps) => {
 	return (
 		<Card className='flex-row items-center py-4'>
 			<CardContent className='flex items-center gap-4 py-0'>

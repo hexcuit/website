@@ -7,7 +7,7 @@ interface SectionProps {
 	title?: string
 }
 
-export function Section({ children, className, title }: SectionProps) {
+export const Section = ({ children, className, title }: SectionProps) => {
 	return (
 		<section className={cn('py-16 px-4', className)}>
 			<div className='max-w-5xl mx-auto'>

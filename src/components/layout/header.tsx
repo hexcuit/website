@@ -1,7 +1,11 @@
 import { Link } from '@tanstack/react-router'
+import { Github } from 'lucide-react'
+import { Button } from '~/components/ui/button'
 import { ThemeToggle } from './theme-toggle'
 
-export function Header() {
+const GITHUB_URL = 'https://github.com/hexcuit'
+
+export const Header = () => {
 	return (
 		<header className='border-b'>
 			<nav className='max-w-5xl mx-auto px-4 py-4 flex items-center justify-between'>
@@ -12,6 +16,11 @@ export function Header() {
 					<Link to='/' activeProps={{ className: 'text-primary' }} activeOptions={{ exact: true }}>
 						Home
 					</Link>
+					<Button variant='ghost' size='icon' asChild>
+						<a href={GITHUB_URL} target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
+							<Github className='h-5 w-5' />
+						</a>
+					</Button>
 					<ThemeToggle />
 				</div>
 			</nav>

@@ -2,7 +2,7 @@ import { Button } from '~/components/ui/button'
 
 const DISCORD_INVITE_URL = 'https://discord.com/oauth2/authorize?client_id=1413060641811337256'
 
-export function Hero() {
+export const Hero = () => {
 	return (
 		<section className='py-20 px-4'>
 			<div className='max-w-4xl mx-auto text-center'>
