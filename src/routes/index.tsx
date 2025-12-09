@@ -15,7 +15,9 @@ function Home() {
 						League of Legendsのランク管理とチームバランシング機能を提供するDiscord Bot
 					</p>
 					<a
-						href='#'
+						href='https://discord.com/oauth2/authorize?client_id=1413060641811337256'
+						target='_blank'
+						rel='noopener noreferrer'
 						className='inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors'
 					>
 						Botを招待する
