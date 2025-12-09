@@ -5,6 +5,7 @@ import type { ReactNode } from 'react'
 import { DefaultCatchBoundary } from '~/components/DefaultCatchBoundary'
 import { Header } from '~/components/layout'
 import { NotFound } from '~/components/NotFound'
+import { ThemeProvider } from '~/components/theme-provider'
 import appCss from '~/styles/app.css?url'
 import { seo } from '~/utils/seo'
 
@@ -35,13 +36,15 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: ReactNode }) {
 	return (
-		<html lang='ja'>
+		<html lang='ja' suppressHydrationWarning>
 			<head>
 				<HeadContent />
 			</head>
 			<body className='min-h-screen bg-background text-foreground'>
-				<Header />
-				<main>{children}</main>
+				<ThemeProvider defaultTheme='system' storageKey='hexcuit-theme'>
+					<Header />
+					<main>{children}</main>
+				</ThemeProvider>
 				<TanStackRouterDevtools position='bottom-right' />
 				<Scripts />
 			</body>

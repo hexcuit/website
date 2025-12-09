@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { ThemeToggle } from './theme-toggle'
 
 export function Header() {
 	return (
@@ -7,10 +8,11 @@ export function Header() {
 				<Link to='/' className='text-xl font-bold'>
 					Hexcuit
 				</Link>
-				<div className='flex gap-6'>
+				<div className='flex items-center gap-6'>
 					<Link to='/' activeProps={{ className: 'text-primary' }} activeOptions={{ exact: true }}>
 						Home
 					</Link>
+					<ThemeToggle />
 				</div>
 			</nav>
 		</header>
