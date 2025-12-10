@@ -15,7 +15,7 @@ function Home() {
 				<div className='grid md:grid-cols-3 gap-6'>
 					<FeatureCard
 						title='ランク登録'
-						description='Riot IDを登録してLoLランクを自動取得。チームメンバーのランクを一覧表示できます。'
+						description='Riot IDを登録してLoLランクを取得。チームメンバーのランクを一覧表示できます。'
 					/>
 					<FeatureCard
 						title='チームバランシング'
