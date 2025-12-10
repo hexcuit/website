@@ -1,4 +1,5 @@
 import { cloudflare } from '@cloudflare/vite-plugin'
+import mdx from '@mdx-js/rollup'
 import tailwindcss from '@tailwindcss/vite'
 import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
@@ -14,6 +15,7 @@ export default defineConfig({
 		tanstackStart({
 			srcDirectory: 'src',
 		}),
+		{ enforce: 'pre', ...mdx() },
 		viteReact(),
 		tailwindcss(),
 	],

@@ -3,7 +3,7 @@ import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import type { ReactNode } from 'react'
 import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
-import { Header } from '~/components/layout'
+import { Footer, Header } from '~/components/layout'
 import { NotFound } from '~/components/not-found'
 import { ThemeProvider } from '~/components/theme-provider'
 import { config } from '~/config'
@@ -63,8 +63,11 @@ function RootDocument({ children }: { children: ReactNode }) {
 			</head>
 			<body className='min-h-screen bg-background text-foreground'>
 				<ThemeProvider defaultTheme={config.theme.defaultTheme} storageKey={config.theme.storageKey}>
-					<Header />
-					<main>{children}</main>
+					<div className='flex min-h-screen flex-col'>
+						<Header />
+						<main className='flex-1'>{children}</main>
+						<Footer />
+					</div>
 				</ThemeProvider>
 				<TanStackRouterDevtools position='bottom-right' />
 				<Scripts />

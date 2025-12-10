@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { CommandItem, FeatureCard, Hero } from '~/components/home'
-import { Footer, Section } from '~/components/layout'
+import { Section } from '~/components/layout'
 
 export const Route = createFileRoute('/')({
 	component: Home,
@@ -8,7 +8,7 @@ export const Route = createFileRoute('/')({
 
 function Home() {
 	return (
-		<div className='min-h-screen'>
+		<>
 			<Hero />
 
 			<Section title='機能' className='bg-secondary/50'>
@@ -33,8 +33,6 @@ function Home() {
 					<CommandItem command='/recruit' description='カスタムゲームの募集を作成' />
 				</div>
 			</Section>
-
-			<Footer />
-		</div>
+		</>
 	)
 }
