@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { Github } from 'lucide-react'
+import { FaDiscord, FaGithub } from 'react-icons/fa'
 import { Button } from '~/components/ui/button'
 import { config } from '~/config'
 import { useGithubVersions } from '~/hooks/use-github-versions'
@@ -37,8 +37,13 @@ export const Header = () => {
 						Home
 					</Link>
 					<Button variant='ghost' size='icon' asChild>
+						<a href={config.discord.serverUrl} target='_blank' rel='noopener noreferrer' aria-label='Discord'>
+							<FaDiscord className='h-5 w-5' />
+						</a>
+					</Button>
+					<Button variant='ghost' size='icon' asChild>
 						<a href={config.github.url} target='_blank' rel='noopener noreferrer' aria-label='GitHub'>
-							<Github className='h-5 w-5' />
+							<FaGithub className='h-5 w-5' />
 						</a>
 					</Button>
 					<ThemeToggle />

@@ -28,9 +28,10 @@ function Home() {
 			<Section title='コマンド'>
 				<div className='max-w-4xl mx-auto space-y-4'>
 					<CommandItem command='/register' description='Riot IDを登録してランク情報を取得' />
-					<CommandItem command='/rank' description='登録済みユーザーのランク一覧を表示' />
-					<CommandItem command='/team' description='メンバーをバランスの取れた2チームに分割' />
-					<CommandItem command='/recruit' description='カスタムゲームの募集を作成' />
+					<CommandItem command='/team balance' description='ランクを考慮したバランスの取れたチーム分け' />
+					<CommandItem command='/team random' description='完全ランダムでチーム分け' />
+					<CommandItem command='/recruit create' description='カスタムゲームの募集を作成' />
+					<CommandItem command='/recruit anonymous' description='匿名でカスタムゲームの募集を作成' />
 				</div>
 			</Section>
 		</>
