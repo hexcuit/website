@@ -9,7 +9,7 @@ export const Header = () => {
 	const { versions, loading } = useGithubVersions()
 
 	return (
-		<header className='border-b'>
+		<header className='border-b sticky top-0 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 z-50'>
 			<nav className='max-w-5xl mx-auto px-4 py-4 flex items-center justify-between'>
 				<Link to='/' className='text-xl font-bold'>
 					Hexcuit
@@ -35,6 +35,9 @@ export const Header = () => {
 					</div>
 					<Link to='/' activeProps={{ className: 'text-primary' }} activeOptions={{ exact: true }}>
 						Home
+					</Link>
+					<Link to='/features' activeProps={{ className: 'text-primary' }}>
+						機能
 					</Link>
 					<Button variant='ghost' size='icon' asChild>
 						<a href={config.discord.serverUrl} target='_blank' rel='noopener noreferrer' aria-label='Discord'>
