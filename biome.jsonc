@@ -7,7 +7,7 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"includes": ["**", "!**/*.gen.ts"]
+		"includes": ["**", "!**/*.gen.ts", "!**/worker-configuration.d.ts"]
 	},
 	"assist": {
 		"enabled": true,

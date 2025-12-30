@@ -9,6 +9,7 @@ yarn.lock
 .output
 .nitro
 .wrangler
+.dev.vars
 /dist/
 /build/
 /api/

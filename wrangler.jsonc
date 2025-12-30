@@ -3,5 +3,13 @@
 	"name": "hexcuit-website",
 	"compatibility_date": "2025-09-02",
 	"compatibility_flags": ["nodejs_compat"],
-	"main": "@tanstack/react-start/server-entry"
+	"main": "@tanstack/react-start/server-entry",
+	"d1_databases": [
+		{
+			"binding": "DB",
+			"database_name": "hexcuit-website-auth",
+			"database_id": "fb1c9bfa-e803-44ea-858f-6c75d1fdc93c",
+			"migrations_dir": "drizzle"
+		}
+	]
 }

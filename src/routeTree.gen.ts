@@ -13,7 +13,13 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as RankingSystemRouteImport } from './routes/ranking-system'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as FeaturesRouteImport } from './routes/features'
+import { Route as DashboardRouteRouteImport } from './routes/dashboard/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard/index'
+import { Route as AuthLoginRouteImport } from './routes/auth/login'
+import { Route as DashboardGuildIdIndexRouteImport } from './routes/dashboard/$guildId/index'
+import { Route as DashboardGuildIdSettingsRouteImport } from './routes/dashboard/$guildId/settings'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -35,18 +41,55 @@ const FeaturesRoute = FeaturesRouteImport.update({
   path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardRouteRoute = DashboardRouteRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const AuthLoginRoute = AuthLoginRouteImport.update({
+  id: '/auth/login',
+  path: '/auth/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardGuildIdIndexRoute = DashboardGuildIdIndexRouteImport.update({
+  id: '/$guildId/',
+  path: '/$guildId/',
+  getParentRoute: () => DashboardRouteRoute,
+} as any)
+const DashboardGuildIdSettingsRoute =
+  DashboardGuildIdSettingsRouteImport.update({
+    id: '/$guildId/settings',
+    path: '/$guildId/settings',
+    getParentRoute: () => DashboardRouteRoute,
+  } as any)
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
+  id: '/api/auth/$',
+  path: '/api/auth/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/features': typeof FeaturesRoute
   '/privacy': typeof PrivacyRoute
   '/ranking-system': typeof RankingSystemRoute
   '/terms': typeof TermsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/dashboard/$guildId/settings': typeof DashboardGuildIdSettingsRoute
+  '/dashboard/$guildId': typeof DashboardGuildIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,29 +97,76 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/ranking-system': typeof RankingSystemRoute
   '/terms': typeof TermsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/dashboard/$guildId/settings': typeof DashboardGuildIdSettingsRoute
+  '/dashboard/$guildId': typeof DashboardGuildIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dashboard': typeof DashboardRouteRouteWithChildren
   '/features': typeof FeaturesRoute
   '/privacy': typeof PrivacyRoute
   '/ranking-system': typeof RankingSystemRoute
   '/terms': typeof TermsRoute
+  '/auth/login': typeof AuthLoginRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/dashboard/$guildId/settings': typeof DashboardGuildIdSettingsRoute
+  '/dashboard/$guildId/': typeof DashboardGuildIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/features' | '/privacy' | '/ranking-system' | '/terms'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/features'
+    | '/privacy'
+    | '/ranking-system'
+    | '/terms'
+    | '/auth/login'
+    | '/dashboard/'
+    | '/api/auth/$'
+    | '/dashboard/$guildId/settings'
+    | '/dashboard/$guildId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/features' | '/privacy' | '/ranking-system' | '/terms'
-  id: '__root__' | '/' | '/features' | '/privacy' | '/ranking-system' | '/terms'
+  to:
+    | '/'
+    | '/features'
+    | '/privacy'
+    | '/ranking-system'
+    | '/terms'
+    | '/auth/login'
+    | '/dashboard'
+    | '/api/auth/$'
+    | '/dashboard/$guildId/settings'
+    | '/dashboard/$guildId'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/features'
+    | '/privacy'
+    | '/ranking-system'
+    | '/terms'
+    | '/auth/login'
+    | '/dashboard/'
+    | '/api/auth/$'
+    | '/dashboard/$guildId/settings'
+    | '/dashboard/$guildId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DashboardRouteRoute: typeof DashboardRouteRouteWithChildren
   FeaturesRoute: typeof FeaturesRoute
   PrivacyRoute: typeof PrivacyRoute
   RankingSystemRoute: typeof RankingSystemRoute
   TermsRoute: typeof TermsRoute
+  AuthLoginRoute: typeof AuthLoginRoute
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -109,6 +199,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -116,15 +213,69 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/auth/login': {
+      id: '/auth/login'
+      path: '/auth/login'
+      fullPath: '/auth/login'
+      preLoaderRoute: typeof AuthLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/$guildId/': {
+      id: '/dashboard/$guildId/'
+      path: '/$guildId'
+      fullPath: '/dashboard/$guildId'
+      preLoaderRoute: typeof DashboardGuildIdIndexRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/dashboard/$guildId/settings': {
+      id: '/dashboard/$guildId/settings'
+      path: '/$guildId/settings'
+      fullPath: '/dashboard/$guildId/settings'
+      preLoaderRoute: typeof DashboardGuildIdSettingsRouteImport
+      parentRoute: typeof DashboardRouteRoute
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface DashboardRouteRouteChildren {
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  DashboardGuildIdSettingsRoute: typeof DashboardGuildIdSettingsRoute
+  DashboardGuildIdIndexRoute: typeof DashboardGuildIdIndexRoute
+}
+
+const DashboardRouteRouteChildren: DashboardRouteRouteChildren = {
+  DashboardIndexRoute: DashboardIndexRoute,
+  DashboardGuildIdSettingsRoute: DashboardGuildIdSettingsRoute,
+  DashboardGuildIdIndexRoute: DashboardGuildIdIndexRoute,
+}
+
+const DashboardRouteRouteWithChildren = DashboardRouteRoute._addFileChildren(
+  DashboardRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DashboardRouteRoute: DashboardRouteRouteWithChildren,
   FeaturesRoute: FeaturesRoute,
   PrivacyRoute: PrivacyRoute,
   RankingSystemRoute: RankingSystemRoute,
   TermsRoute: TermsRoute,
+  AuthLoginRoute: AuthLoginRoute,
+  ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

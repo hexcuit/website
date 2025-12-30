@@ -10,7 +10,7 @@ const fetchLatestVersion = async (repo: string): Promise<string | null> => {
 	try {
 		const res = await fetch(`https://api.github.com/repos/${repo}/releases/latest`)
 		if (!res.ok) return null
-		const data = await res.json()
+		const data = (await res.json()) as { tag_name?: string }
 		return data.tag_name || null
 	} catch {
 		return null
