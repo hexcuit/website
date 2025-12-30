@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as RankingSystemRouteImport } from './routes/ranking-system'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RankingSystemRoute = RankingSystemRouteImport.update({
+  id: '/ranking-system',
+  path: '/ranking-system',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/features': typeof FeaturesRoute
   '/privacy': typeof PrivacyRoute
+  '/ranking-system': typeof RankingSystemRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/features': typeof FeaturesRoute
   '/privacy': typeof PrivacyRoute
+  '/ranking-system': typeof RankingSystemRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,22 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/features': typeof FeaturesRoute
   '/privacy': typeof PrivacyRoute
+  '/ranking-system': typeof RankingSystemRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/features' | '/privacy' | '/terms'
+  fullPaths: '/' | '/features' | '/privacy' | '/ranking-system' | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/features' | '/privacy' | '/terms'
-  id: '__root__' | '/' | '/features' | '/privacy' | '/terms'
+  to: '/' | '/features' | '/privacy' | '/ranking-system' | '/terms'
+  id: '__root__' | '/' | '/features' | '/privacy' | '/ranking-system' | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FeaturesRoute: typeof FeaturesRoute
   PrivacyRoute: typeof PrivacyRoute
+  RankingSystemRoute: typeof RankingSystemRoute
   TermsRoute: typeof TermsRoute
 }
 
@@ -76,6 +86,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ranking-system': {
+      id: '/ranking-system'
+      path: '/ranking-system'
+      fullPath: '/ranking-system'
+      preLoaderRoute: typeof RankingSystemRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -106,6 +123,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FeaturesRoute: FeaturesRoute,
   PrivacyRoute: PrivacyRoute,
+  RankingSystemRoute: RankingSystemRoute,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport

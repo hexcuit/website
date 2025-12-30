@@ -39,6 +39,9 @@ export const Header = () => {
 					<Link to='/features' activeProps={{ className: 'text-primary' }}>
 						機能
 					</Link>
+					<Link to='/ranking-system' activeProps={{ className: 'text-primary' }}>
+						ランクシステム
+					</Link>
 					<Button variant='ghost' size='icon' asChild>
 						<a href={config.discord.serverUrl} target='_blank' rel='noopener noreferrer' aria-label='Discord'>
 							<FaDiscord className='h-5 w-5' />
