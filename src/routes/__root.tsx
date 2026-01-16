@@ -1,9 +1,12 @@
+import type { ReactNode } from 'react'
+
 /// <reference types="vite/client" />
 import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
-import type { ReactNode } from 'react'
+
 import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
-import { Footer, Header } from '~/components/layout'
+import { Footer } from '~/components/layout/footer'
+import { Header } from '~/components/layout/header'
 import { NotFound } from '~/components/not-found'
 import { ThemeProvider } from '~/components/theme-provider'
 import { config } from '~/config'
@@ -57,19 +60,22 @@ export const Route = createRootRoute({
 
 function RootDocument({ children }: { children: ReactNode }) {
 	return (
-		<html lang='ja' suppressHydrationWarning>
+		<html lang="ja" suppressHydrationWarning>
 			<head>
 				<HeadContent />
 			</head>
-			<body className='min-h-screen bg-background text-foreground'>
-				<ThemeProvider defaultTheme={config.theme.defaultTheme} storageKey={config.theme.storageKey}>
-					<div className='flex min-h-screen flex-col'>
+			<body className="min-h-screen bg-background text-foreground">
+				<ThemeProvider
+					defaultTheme={config.theme.defaultTheme}
+					storageKey={config.theme.storageKey}
+				>
+					<div className="flex min-h-screen flex-col">
 						<Header />
-						<main className='flex-1'>{children}</main>
+						<main className="flex-1">{children}</main>
 						<Footer />
 					</div>
 				</ThemeProvider>
-				<TanStackRouterDevtools position='bottom-right' />
+				<TanStackRouterDevtools position="bottom-right" />
 				<Scripts />
 			</body>
 		</html>

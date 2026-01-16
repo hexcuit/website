@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+
 import { config } from '~/config'
 
 interface Versions {
@@ -30,7 +31,7 @@ export const useGithubVersions = () => {
 			setVersions({ server, bot })
 			setLoading(false)
 		}
-		fetchVersions()
+		void fetchVersions()
 	}, [])
 
 	return { versions, loading }

@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useContext, useEffect, useState } from 'react'
+
 import { config } from '~/config'
 
 type Theme = 'dark' | 'light' | 'system'
@@ -32,7 +33,9 @@ export const ThemeProvider = ({
 		root.classList.remove('light', 'dark')
 
 		if (theme === 'system') {
-			const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+			const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+				? 'dark'
+				: 'light'
 			root.classList.add(systemTheme)
 			return
 		}
