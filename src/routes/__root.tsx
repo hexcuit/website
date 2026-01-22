@@ -9,25 +9,8 @@ import { CursorGlow } from '~/components/effects/cursor-glow'
 import { Footer } from '~/components/layout/footer'
 import { Header } from '~/components/layout/header'
 import { NotFound } from '~/components/not-found'
-import { ThemeProvider } from '~/components/theme-provider'
-import { config } from '~/config'
 import appCss from '~/styles/app.css?url'
 import { seo } from '~/utils/seo'
-
-const themeScript = `
-(function() {
-  const storageKey = '${config.theme.storageKey}';
-  const theme = localStorage.getItem(storageKey);
-  const root = document.documentElement;
-
-  if (theme === 'dark' || theme === 'light') {
-    root.classList.add(theme);
-  } else {
-    const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    root.classList.add(systemTheme);
-  }
-})();
-`
 
 export const Route = createRootRoute({
 	head: () => ({
@@ -48,11 +31,6 @@ export const Route = createRootRoute({
 			{ rel: 'stylesheet', href: appCss },
 			{ rel: 'icon', href: '/hexcuit.png' },
 		],
-		scripts: [
-			{
-				children: themeScript,
-			},
-		],
 	}),
 	errorComponent: DefaultCatchBoundary,
 	notFoundComponent: () => <NotFound />,
@@ -66,17 +44,12 @@ function RootDocument({ children }: { children: ReactNode }) {
 				<HeadContent />
 			</head>
 			<body className="min-h-screen bg-background text-foreground">
-				<ThemeProvider
-					defaultTheme={config.theme.defaultTheme}
-					storageKey={config.theme.storageKey}
-				>
-					<CursorGlow color="mixed" intensity="low" />
-					<div className="flex min-h-screen flex-col">
-						<Header />
-						<main className="flex-1">{children}</main>
-						<Footer />
-					</div>
-				</ThemeProvider>
+				<CursorGlow color="mixed" intensity="low" />
+				<div className="flex min-h-screen flex-col">
+					<Header />
+					<main className="flex-1">{children}</main>
+					<Footer />
+				</div>
 				<TanStackRouterDevtools position="bottom-right" />
 				<Scripts />
 			</body>

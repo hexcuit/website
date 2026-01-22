@@ -9,8 +9,6 @@ import { config } from '~/config'
 import { useGithubVersions } from '~/hooks/use-github-versions'
 import { cn } from '~/lib/utils'
 
-import { ThemeToggle } from './theme-toggle'
-
 export const Header = () => {
 	const { versions, loading } = useGithubVersions()
 	const [scrolled, setScrolled] = useState(false)
@@ -153,7 +151,6 @@ export const Header = () => {
 							</a>
 						</Button>
 					</Magnetic>
-					<ThemeToggle />
 				</div>
 			</nav>
 		</header>

@@ -114,6 +114,9 @@ export const GlitchText = ({
 					delay: i * 0.01,
 					yoyo: true,
 					repeat: 3,
+					onComplete: () => {
+						gsap.set(char, { y: 0, opacity: 1 })
+					},
 				})
 			})
 		}
@@ -132,7 +135,7 @@ export const GlitchText = ({
 	return (
 		<Component
 			ref={textRef as React.RefObject<HTMLElement & HTMLHeadingElement & HTMLParagraphElement>}
-			className={cn('glitch relative inline-block', className)}
+			className={cn('relative inline-block', className)}
 			data-text={children}
 			onMouseEnter={glitchOnHover ? triggerGlitch : undefined}
 			style={{ perspective: '1000px' }}

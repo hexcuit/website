@@ -97,7 +97,7 @@ export const CursorGlow = ({
 			<div
 				ref={glowRef}
 				className={cn(
-					'pointer-events-none fixed top-0 left-0 z-[1] rounded-full blur-[100px] transition-opacity duration-500',
+					'pointer-events-none fixed top-0 left-0 z-1 rounded-full blur-[100px] transition-opacity duration-500',
 					isVisible ? 'opacity-100' : 'opacity-0',
 					className,
 				)}
@@ -118,7 +118,7 @@ export const CursorGlow = ({
 			<div
 				ref={innerGlowRef}
 				className={cn(
-					'pointer-events-none fixed top-0 left-0 z-[2] h-[100px] w-[100px] rounded-full blur-xl transition-all duration-300',
+					'pointer-events-none fixed top-0 left-0 z-2 h-25 w-25 rounded-full blur-xl transition-all duration-300',
 					isHoveringInteractive ? 'scale-150 opacity-60' : 'scale-100 opacity-0',
 				)}
 				style={{

@@ -57,7 +57,7 @@ function RankingSystem() {
 				</div>
 
 				{/* Scroll indicator line */}
-				<div className="absolute bottom-0 left-1/2 h-16 w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-cyber/50 to-transparent" />
+				<div className="absolute bottom-0 left-1/2 h-16 w-px -translate-x-1/2 bg-linear-to-b from-transparent via-cyber/50 to-transparent" />
 			</section>
 
 			<Section title="レーティングシステム概要" icon="stats">
@@ -341,7 +341,7 @@ function RankingSystem() {
 
 const FeatureItem = ({ children }: { children: React.ReactNode }) => (
 	<li className="flex items-start gap-3">
-		<span className="mt-2 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-cyber" />
+		<span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyber" />
 		<span>{children}</span>
 	</li>
 )

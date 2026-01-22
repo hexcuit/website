@@ -11,8 +11,4 @@ export const config = {
 			bot: 'hexcuit/discord-bot',
 		},
 	},
-	theme: {
-		storageKey: 'hexcuit-theme',
-		defaultTheme: 'system' as const,
-	},
 } as const
