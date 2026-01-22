@@ -7,7 +7,7 @@ export const Footer = () => {
 	return (
 		<footer className="relative border-t border-border/50 bg-surface/50">
 			{/* Top accent line */}
-			<div className="absolute left-0 right-0 top-0 h-px bg-gradient-to-r from-transparent via-neon/30 to-transparent" />
+			<div className="absolute top-0 right-0 left-0 h-px bg-gradient-to-r from-transparent via-neon/30 to-transparent" />
 
 			<div className="mx-auto max-w-6xl px-4 py-12">
 				<div className="grid gap-8 md:grid-cols-3">
@@ -43,7 +43,7 @@ export const Footer = () => {
 
 					{/* Quick Links */}
 					<div>
-						<h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+						<h4 className="mb-3 text-sm font-semibold tracking-wider text-muted-foreground uppercase">
 							リンク
 						</h4>
 						<ul className="space-y-2">
@@ -86,7 +86,7 @@ export const Footer = () => {
 
 					{/* Legal */}
 					<div>
-						<h4 className="mb-3 text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+						<h4 className="mb-3 text-sm font-semibold tracking-wider text-muted-foreground uppercase">
 							法的情報
 						</h4>
 						<ul className="space-y-2">

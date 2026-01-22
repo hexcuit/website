@@ -15,8 +15,8 @@ export const DefaultCatchBoundary = ({ error }: ErrorComponentProps) => {
 	console.error('DefaultCatchBoundary Error:', error)
 
 	return (
-		<div className="min-h-[50vh] flex items-center justify-center p-4">
-			<Card className="max-w-md w-full">
+		<div className="flex min-h-[50vh] items-center justify-center p-4">
+			<Card className="w-full max-w-md">
 				<CardHeader>
 					<CardTitle className="text-destructive">エラーが発生しました</CardTitle>
 				</CardHeader>

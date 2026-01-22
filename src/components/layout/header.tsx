@@ -11,7 +11,7 @@ export const Header = () => {
 	const { versions, loading } = useGithubVersions()
 
 	return (
-		<header className="fixed left-0 right-0 top-0 z-50 border-b border-border/30 bg-background/60 backdrop-blur-xl">
+		<header className="fixed top-0 right-0 left-0 z-50 border-b border-border/30 bg-background/60 backdrop-blur-xl">
 			{/* Top neon line */}
 			<div className="h-px w-full bg-gradient-to-r from-transparent via-neon/50 to-transparent" />
 

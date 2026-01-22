@@ -11,8 +11,8 @@ interface NotFoundProps {
 
 export const NotFound = ({ children }: NotFoundProps) => {
 	return (
-		<div className="min-h-[50vh] flex items-center justify-center p-4">
-			<Card className="max-w-md w-full text-center">
+		<div className="flex min-h-[50vh] items-center justify-center p-4">
+			<Card className="w-full max-w-md text-center">
 				<CardHeader>
 					<CardTitle className="text-4xl">404</CardTitle>
 				</CardHeader>

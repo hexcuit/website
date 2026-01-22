@@ -4,6 +4,12 @@
 	"experimentalSortImports": {
 		"order": "asc"
 	},
+	"experimentalTailwindcss": {
+		"stylesheet": "./src/styles/app.css",
+		"attributes": ["class", "className"],
+		"functions": ["clsx", "cn"],
+		"preserveWhitespace": true
+	},
 	"semi": false,
 	"singleQuote": true,
 	"useTabs": true,

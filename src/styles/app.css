@@ -1,9 +1,11 @@
-/* Google Fonts - must be first */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Local fonts from fontsource */
+@import '@fontsource-variable/orbitron';
+@import '@fontsource-variable/jetbrains-mono';
+@import '@fontsource-variable/space-grotesk';
 
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@plugin "@tailwindcss/typography";
+@plugin '@tailwindcss/typography';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -52,10 +54,10 @@
 	--color-electric: var(--electric);
 	--color-surface: var(--surface);
 
-	/* Typography */
-	--font-display: 'Orbitron', sans-serif;
-	--font-mono: 'JetBrains Mono', monospace;
-	--font-sans: 'Space Grotesk', sans-serif;
+	/* Typography - Local fonts */
+	--font-display: 'Orbitron Variable', sans-serif;
+	--font-mono: 'JetBrains Mono Variable', monospace;
+	--font-sans: 'Space Grotesk Variable', sans-serif;
 }
 
 /* Light Mode - Cyber Clean */
@@ -533,5 +535,170 @@
 		background: oklch(from var(--card) l c h / 0.8);
 		backdrop-filter: blur(20px);
 		border: 1px solid oklch(from var(--border) l c h / 0.6);
+	}
+
+	/* Orbit animation for floating orbs */
+	@keyframes orbit {
+		0% {
+			transform: translate(0, 0) rotate(0deg);
+			left: 10%;
+			top: 20%;
+		}
+		25% {
+			left: 80%;
+			top: 30%;
+		}
+		50% {
+			left: 70%;
+			top: 70%;
+		}
+		75% {
+			left: 20%;
+			top: 60%;
+		}
+		100% {
+			left: 10%;
+			top: 20%;
+		}
+	}
+
+	/* Scroll indicator animation */
+	@keyframes scroll-indicator {
+		0%,
+		100% {
+			transform: translateY(0);
+			opacity: 1;
+		}
+		50% {
+			transform: translateY(24px);
+			opacity: 0.3;
+		}
+	}
+
+	/* Vertical shimmer */
+	@keyframes shimmer-v {
+		0% {
+			transform: translateY(-100%);
+		}
+		100% {
+			transform: translateY(100%);
+		}
+	}
+
+	/* Gradient Y animation */
+	@keyframes gradient-y {
+		0%,
+		100% {
+			background-position: 0% 0%;
+		}
+		50% {
+			background-position: 0% 100%;
+		}
+	}
+
+	/* Scale X animation */
+	@keyframes scale-x {
+		0%,
+		100% {
+			transform: scaleX(0.3);
+			opacity: 0.3;
+		}
+		50% {
+			transform: scaleX(1);
+			opacity: 1;
+		}
+	}
+
+	/* Draw animation for SVG paths */
+	@keyframes draw {
+		to {
+			stroke-dashoffset: 0;
+		}
+	}
+
+	/* Subtle breathing */
+	.breathe {
+		animation: breathe 4s ease-in-out infinite;
+	}
+	@keyframes breathe {
+		0%,
+		100% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		50% {
+			transform: scale(1.02);
+			opacity: 0.8;
+		}
+	}
+
+	/* Glow pulse */
+	.glow-pulse {
+		animation: glow-pulse 2s ease-in-out infinite;
+	}
+	@keyframes glow-pulse {
+		0%,
+		100% {
+			filter: drop-shadow(0 0 2px var(--neon-glow));
+		}
+		50% {
+			filter: drop-shadow(0 0 10px var(--neon-glow)) drop-shadow(0 0 20px var(--neon-glow));
+		}
+	}
+
+	/* Text shimmer */
+	.text-shimmer {
+		background: linear-gradient(
+			90deg,
+			var(--foreground) 0%,
+			var(--neon) 50%,
+			var(--foreground) 100%
+		);
+		background-size: 200% 100%;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		animation: text-shimmer 3s linear infinite;
+	}
+	@keyframes text-shimmer {
+		0% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: -100% 50%;
+		}
+	}
+
+	/* Border beam effect */
+	.border-beam {
+		position: relative;
+		overflow: hidden;
+	}
+	.border-beam::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		padding: 1px;
+		border-radius: inherit;
+		background: linear-gradient(
+			var(--beam-angle, 0deg),
+			transparent 40%,
+			var(--neon) 50%,
+			transparent 60%
+		);
+		-webkit-mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
+		-webkit-mask-composite: xor;
+		mask-composite: exclude;
+		animation: border-beam 4s linear infinite;
+	}
+	@keyframes border-beam {
+		0% {
+			--beam-angle: 0deg;
+		}
+		100% {
+			--beam-angle: 360deg;
+		}
 	}
 }

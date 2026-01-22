@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
+import { StaggerReveal } from '~/components/effects'
 import { CommandItem, FeatureCard, Hero } from '~/components/home'
 import { Section } from '~/components/layout/section'
 
@@ -12,8 +13,16 @@ function Home() {
 		<>
 			<Hero />
 
-			<Section title="機能" className="bg-secondary/30">
-				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+			<Section
+				title="機能"
+				subtitle="Hexcuitが提供する主要な機能をご紹介します"
+				className="bg-secondary/30"
+			>
+				<StaggerReveal
+					stagger={0.15}
+					direction="up"
+					className="grid gap-6 md:grid-cols-2 lg:grid-cols-4"
+				>
 					<FeatureCard
 						icon="rank"
 						title="ランク登録"
@@ -38,26 +47,40 @@ function Home() {
 						description="Eloレーティングシステム。投票で勝敗確定後レート更新。統計カードと試合履歴も確認可能。"
 						index={3}
 					/>
-				</div>
+				</StaggerReveal>
 			</Section>
 
-			<Section title="コマンド">
-				<div className="mx-auto max-w-4xl space-y-3">
-					<CommandItem command="/register" description="LoLランク（ティア・ディビジョン）を登録" />
+			<Section title="コマンド" subtitle="スラッシュコマンドで簡単操作">
+				<StaggerReveal stagger={0.08} direction="left" className="mx-auto max-w-4xl space-y-3">
+					<CommandItem
+						command="/register"
+						description="LoLランク（ティア・ディビジョン）を登録"
+						index={0}
+					/>
 					<CommandItem
 						command="/team balance"
 						description="ランクを考慮したバランスの取れたチーム分け"
+						index={1}
 					/>
-					<CommandItem command="/team random" description="完全ランダムでチーム分け" />
-					<CommandItem command="/queue create" description="カスタムゲームの募集を作成" />
-					<CommandItem command="/queue anonymous" description="匿名でカスタムゲームの募集を作成" />
+					<CommandItem command="/team random" description="完全ランダムでチーム分け" index={2} />
+					<CommandItem command="/queue create" description="カスタムゲームの募集を作成" index={3} />
+					<CommandItem
+						command="/queue anonymous"
+						description="匿名でカスタムゲームの募集を作成"
+						index={4}
+					/>
 					<CommandItem
 						command="/queue rank"
 						description="サーバー内ランク戦の募集を作成（投票で勝敗報告）"
+						index={5}
 					/>
-					<CommandItem command="/stats" description="サーバー内ランクと統計カードを表示" />
-					<CommandItem command="/ranking" description="サーバー内ランキングを表示" />
-				</div>
+					<CommandItem
+						command="/stats"
+						description="サーバー内ランクと統計カードを表示"
+						index={6}
+					/>
+					<CommandItem command="/ranking" description="サーバー内ランキングを表示" index={7} />
+				</StaggerReveal>
 			</Section>
 		</>
 	)
