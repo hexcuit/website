@@ -9,7 +9,7 @@ import { config } from '~/config'
 
 export const Hero = () => {
 	return (
-		<section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+		<section className="relative flex min-h-svh items-center justify-center overflow-hidden pt-32 pb-8">
 			{/* Background effects */}
 			<GridBackground />
 			<Particles count={50} />
@@ -219,11 +219,9 @@ export const Hero = () => {
 					<Badge icon="free" label="無料で利用可能" color="cyber" delay={0.1} />
 					<Badge icon="active" label="アクティブ開発中" color="electric" delay={0.2} />
 				</ScrollReveal>
-			</div>
 
-			{/* Scroll indicator */}
-			<div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-				<ScrollReveal direction="fade" delay={1.5}>
+				{/* Scroll indicator */}
+				<ScrollReveal direction="fade" delay={1.5} className="mt-12 pb-8">
 					<div className="flex flex-col items-center gap-3">
 						<span className="font-mono text-xs tracking-[0.3em] text-muted-foreground/60 uppercase">
 							Scroll

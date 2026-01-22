@@ -373,17 +373,27 @@
 	.gradient-text {
 		background: linear-gradient(135deg, var(--neon) 0%, var(--cyber) 50%, var(--electric) 100%);
 		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
+	.gradient-text > span {
+		-webkit-text-fill-color: inherit;
+		color: inherit;
 	}
 
 	.gradient-text-animated {
 		background: linear-gradient(135deg, var(--neon), var(--cyber), var(--electric), var(--neon));
 		background-size: 300% 300%;
 		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
 		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
 		animation: gradient-shift 3s ease infinite;
+	}
+	.gradient-text-animated > span {
+		-webkit-text-fill-color: inherit;
+		color: inherit;
 	}
 	@keyframes gradient-shift {
 		0%,

@@ -38,6 +38,18 @@ export const GlitchText = ({
 
 	const config = intensityConfig[intensity]
 
+	// Check if gradient text class is applied
+	const isGradientText = className?.includes('gradient-text')
+	const isAnimatedGradient = className?.includes('gradient-text-animated')
+
+	// Filter out gradient-text classes from parent, keep other classes
+	const parentClassName = isGradientText
+		? className
+				?.split(' ')
+				.filter((c) => !c.includes('gradient-text'))
+				.join(' ')
+		: className
+
 	// Character reveal animation on mount
 	useEffect(() => {
 		if (!revealOnMount || isRevealed) return
@@ -131,11 +143,37 @@ export const GlitchText = ({
 
 	// Split text into characters for individual animation
 	const characters = children.split('')
+	const totalChars = characters.length
+
+	// Calculate gradient background position for each character
+	const getGradientStyle = (index: number): React.CSSProperties => {
+		if (!isGradientText) return {}
+
+		const gradient = isAnimatedGradient
+			? 'linear-gradient(135deg, var(--neon), var(--cyber), var(--electric), var(--neon))'
+			: 'linear-gradient(135deg, var(--neon) 0%, var(--cyber) 50%, var(--electric) 100%)'
+
+		// Calculate position percentage for continuous gradient across all characters
+		const position = totalChars > 1 ? (index / (totalChars - 1)) * 100 : 50
+
+		return {
+			background: gradient,
+			backgroundSize: `${totalChars * 100}% 100%`,
+			backgroundPosition: `${position}% 50%`,
+			backgroundClip: 'text',
+			WebkitBackgroundClip: 'text',
+			WebkitTextFillColor: 'transparent',
+			color: 'transparent',
+			...(isAnimatedGradient && {
+				animation: 'gradient-shift 3s ease infinite',
+			}),
+		}
+	}
 
 	return (
 		<Component
 			ref={textRef as React.RefObject<HTMLElement & HTMLHeadingElement & HTMLParagraphElement>}
-			className={cn('relative inline-block', className)}
+			className={cn('relative inline-block', parentClassName)}
 			data-text={children}
 			onMouseEnter={glitchOnHover ? triggerGlitch : undefined}
 			style={{ perspective: '1000px' }}
@@ -150,6 +188,7 @@ export const GlitchText = ({
 					style={{
 						display: char === ' ' ? 'inline' : 'inline-block',
 						transformStyle: 'preserve-3d',
+						...getGradientStyle(i),
 					}}
 				>
 					{char === ' ' ? '\u00A0' : char}
