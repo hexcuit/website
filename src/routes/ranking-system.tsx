@@ -85,8 +85,8 @@ function RankingSystem() {
 			<Section title="Placementシステム" icon="placement" variant="alt">
 				<div className="mx-auto max-w-3xl space-y-6">
 					<p className="text-lg text-muted-foreground">
-						最初の5試合はPlacement期間として、レートの変動が通常の2倍になります。
-						これにより、少ない試合数で適正レートに近づくことができます。
+						最初の5試合はPlacement期間として、勝利時のレート上昇が通常の2倍になります。
+						敗北してもレートは下がらないため、安心してランク戦に挑戦できます。
 					</p>
 					<div className="grid gap-6 sm:grid-cols-2">
 						<div className="rounded-xl border border-electric/30 bg-electric/5 p-6">
@@ -97,7 +97,7 @@ function RankingSystem() {
 									<span className="text-green-400">▲</span> 勝利: +32 レート
 								</li>
 								<li className="flex items-center gap-2">
-									<span className="text-red-400">▼</span> 敗北: -32 レート
+									<span className="text-gray-400">―</span> 敗北: 変動なし
 								</li>
 								<li className="flex items-center gap-2">
 									<span className="text-gray-400">―</span> 引き分け: 変動なし
@@ -314,7 +314,11 @@ function RankingSystem() {
 								{[
 									{ item: '初期レート', default: '1200', desc: '新規参加者の初期レート' },
 									{ item: 'K値（通常）', default: '32', desc: '通常時のレート変動幅（±16）' },
-									{ item: 'K値（Placement）', default: '64', desc: 'Placement期間の変動幅（±32）' },
+									{
+										item: 'K値（Placement）',
+										default: '64',
+										desc: 'Placement期間の勝利時変動幅（+32）',
+									},
 									{ item: 'Placement試合数', default: '5', desc: 'Placement期間の試合数' },
 								].map((row, i) => (
 									<tr
