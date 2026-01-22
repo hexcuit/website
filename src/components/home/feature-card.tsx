@@ -5,7 +5,7 @@ import gsap from 'gsap'
 import { Award, Scale, Swords, Users } from 'lucide-react'
 import { useRef, useState } from 'react'
 
-import { TiltCard } from '~/components/effects'
+import { TiltCard } from '~/components/effects/magnetic'
 import { cn } from '~/lib/utils'
 
 interface FeatureCardProps {
@@ -152,7 +152,7 @@ export const FeatureCard = ({ title, description, icon, index = 0 }: FeatureCard
 				<div
 					ref={glowRef}
 					className={cn(
-						'pointer-events-none absolute h-[200px] w-[200px] rounded-full opacity-0 blur-3xl transition-opacity duration-300',
+						'pointer-events-none absolute h-50 w-50 rounded-full opacity-0 blur-3xl transition-opacity duration-300',
 						isHovered && 'opacity-30',
 						accent === 'neon' && 'bg-neon',
 						accent === 'cyber' && 'bg-cyber',
@@ -176,7 +176,7 @@ export const FeatureCard = ({ title, description, icon, index = 0 }: FeatureCard
 					{/* Top line */}
 					<div
 						className={cn(
-							'absolute top-0 left-0 h-px bg-gradient-to-r from-transparent to-transparent transition-all duration-500',
+							'absolute top-0 left-0 h-px bg-linear-to-r from-transparent to-transparent transition-all duration-500',
 							isHovered ? 'w-full' : 'w-0',
 							accent === 'neon' && 'via-neon',
 							accent === 'cyber' && 'via-cyber',
@@ -186,7 +186,7 @@ export const FeatureCard = ({ title, description, icon, index = 0 }: FeatureCard
 					{/* Right line */}
 					<div
 						className={cn(
-							'absolute top-0 right-0 w-px bg-gradient-to-b from-transparent to-transparent transition-all delay-100 duration-500',
+							'absolute top-0 right-0 w-px bg-linear-to-b from-transparent to-transparent transition-all delay-100 duration-500',
 							isHovered ? 'h-full' : 'h-0',
 							accent === 'neon' && 'via-neon',
 							accent === 'cyber' && 'via-cyber',
@@ -196,7 +196,7 @@ export const FeatureCard = ({ title, description, icon, index = 0 }: FeatureCard
 					{/* Bottom line */}
 					<div
 						className={cn(
-							'absolute right-0 bottom-0 h-px bg-gradient-to-l from-transparent to-transparent transition-all delay-200 duration-500',
+							'absolute right-0 bottom-0 h-px bg-linear-to-l from-transparent to-transparent transition-all delay-200 duration-500',
 							isHovered ? 'w-full' : 'w-0',
 							accent === 'neon' && 'via-neon',
 							accent === 'cyber' && 'via-cyber',
@@ -206,7 +206,7 @@ export const FeatureCard = ({ title, description, icon, index = 0 }: FeatureCard
 					{/* Left line */}
 					<div
 						className={cn(
-							'absolute bottom-0 left-0 w-px bg-gradient-to-t from-transparent to-transparent transition-all delay-300 duration-500',
+							'absolute bottom-0 left-0 w-px bg-linear-to-t from-transparent to-transparent transition-all delay-300 duration-500',
 							isHovered ? 'h-full' : 'h-0',
 							accent === 'neon' && 'via-neon',
 							accent === 'cyber' && 'via-cyber',

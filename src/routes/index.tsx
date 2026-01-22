@@ -1,7 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { StaggerReveal } from '~/components/effects'
-import { CommandItem, FeatureCard, Hero } from '~/components/home'
+import { StaggerReveal } from '~/components/effects/scroll-reveal'
+import { CommandItem } from '~/components/home/command-item'
+import { FeatureCard } from '~/components/home/feature-card'
+import { Hero } from '~/components/home/hero'
 import { Section } from '~/components/layout/section'
 
 export const Route = createFileRoute('/')({

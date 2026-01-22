@@ -1,11 +1,9 @@
-import {
-	GlitchText,
-	GridBackground,
-	Particles,
-	Magnetic,
-	TextReveal,
-	ScrollReveal,
-} from '~/components/effects'
+import { GlitchText } from '~/components/effects/glitch-text'
+import { GridBackground } from '~/components/effects/grid-background'
+import { Magnetic } from '~/components/effects/magnetic'
+import { Particles } from '~/components/effects/particles'
+import { ScrollReveal } from '~/components/effects/scroll-reveal'
+import { TextReveal } from '~/components/effects/text-reveal'
 import { Button } from '~/components/ui/button'
 import { config } from '~/config'
 
@@ -23,7 +21,7 @@ export const Hero = () => {
 					style={{ animationDuration: '4s' }}
 				/>
 				<div
-					className="absolute -right-40 bottom-1/4 h-[500px] w-[500px] animate-pulse rounded-full bg-cyber/20 blur-[150px]"
+					className="absolute -right-40 bottom-1/4 h-125 w-125 animate-pulse rounded-full bg-cyber/20 blur-[150px]"
 					style={{ animationDelay: '1s', animationDuration: '5s' }}
 				/>
 				<div
@@ -78,9 +76,9 @@ export const Hero = () => {
 				</svg>
 
 				{/* Floating lines */}
-				<div className="absolute top-1/4 left-1/4 h-px w-24 origin-left animate-[scale-x_3s_ease-in-out_infinite] bg-gradient-to-r from-neon/50 to-transparent" />
+				<div className="absolute top-1/4 left-1/4 h-px w-24 origin-left animate-[scale-x_3s_ease-in-out_infinite] bg-linear-to-r from-neon/50 to-transparent" />
 				<div
-					className="absolute right-1/4 bottom-1/3 h-px w-32 origin-right animate-[scale-x_4s_ease-in-out_infinite] bg-gradient-to-l from-cyber/50 to-transparent"
+					className="absolute right-1/4 bottom-1/3 h-px w-32 origin-right animate-[scale-x_4s_ease-in-out_infinite] bg-linear-to-l from-cyber/50 to-transparent"
 					style={{ animationDelay: '1s' }}
 				/>
 			</div>
@@ -100,7 +98,7 @@ export const Hero = () => {
 								className="absolute inset-0 animate-pulse rounded-3xl bg-cyber/30 blur-[60px]"
 								style={{ animationDuration: '4s', animationDelay: '1s' }}
 							/>
-							<div className="absolute -inset-4 animate-[spin_30s_linear_infinite] rounded-[2rem] border border-neon/20" />
+							<div className="absolute -inset-4 animate-[spin_30s_linear_infinite] rounded-4xl border border-neon/20" />
 							<div className="absolute -inset-8 animate-[spin_40s_linear_infinite_reverse] rounded-[2.5rem] border border-dashed border-cyber/10" />
 
 							<img
@@ -193,7 +191,7 @@ export const Hero = () => {
 									</svg>
 									Botを招待
 								</span>
-								<div className="absolute inset-0 -z-10 translate-y-full bg-gradient-to-t from-neon via-neon to-cyber transition-transform duration-500 group-hover:translate-y-0" />
+								<div className="absolute inset-0 -z-10 translate-y-full bg-linear-to-t from-neon via-neon to-cyber transition-transform duration-500 group-hover:translate-y-0" />
 							</a>
 						</Button>
 					</Magnetic>
@@ -202,7 +200,7 @@ export const Hero = () => {
 							asChild
 							variant="outline"
 							size="lg"
-							className="h-14 border-border/50 px-10 text-base font-semibold tracking-wider uppercase backdrop-blur-sm transition-all duration-300 hover:border-cyber/50 hover:bg-cyber/5 hover:shadow-[0_0_20px_var(--cyber-glow)] active:scale-95"
+							className="h-14 border-border/50 px-10 text-base font-semibold tracking-wider text-foreground uppercase backdrop-blur-sm transition-all duration-300 hover:border-cyber/50 hover:bg-cyber/5 hover:text-cyber hover:shadow-[0_0_20px_var(--cyber-glow)] active:scale-95"
 						>
 							<a href={config.discord.serverUrl} target="_blank" rel="noopener noreferrer">
 								サポートサーバー

@@ -5,6 +5,7 @@ import { createRootRoute, HeadContent, Scripts } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
 import { DefaultCatchBoundary } from '~/components/default-catch-boundary'
+import { CursorGlow } from '~/components/effects/cursor-glow'
 import { Footer } from '~/components/layout/footer'
 import { Header } from '~/components/layout/header'
 import { NotFound } from '~/components/not-found'
@@ -69,6 +70,7 @@ function RootDocument({ children }: { children: ReactNode }) {
 					defaultTheme={config.theme.defaultTheme}
 					storageKey={config.theme.storageKey}
 				>
+					<CursorGlow color="mixed" intensity="low" />
 					<div className="flex min-h-screen flex-col">
 						<Header />
 						<main className="flex-1">{children}</main>

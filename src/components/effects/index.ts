@@ -1,6 +1,0 @@
-export { GlitchText } from './glitch-text'
-export { GridBackground } from './grid-background'
-export { Particles } from './particles'
-export { ScrollReveal, StaggerReveal } from './scroll-reveal'
-export { Magnetic, TiltCard } from './magnetic'
-export { TextReveal, Typewriter, ScrambleText } from './text-reveal'

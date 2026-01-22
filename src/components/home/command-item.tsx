@@ -168,7 +168,7 @@ export const CommandItem = ({ command, description, index = 0 }: CommandItemProp
 			<div
 				ref={glowRef}
 				className={cn(
-					'pointer-events-none absolute h-[150px] w-[150px] rounded-full bg-neon/20 opacity-0 blur-2xl transition-opacity duration-300',
+					'pointer-events-none absolute h-37.5 w-37.5 rounded-full bg-neon/20 opacity-0 blur-2xl transition-opacity duration-300',
 					isHovered && 'opacity-100',
 				)}
 			/>
@@ -176,7 +176,7 @@ export const CommandItem = ({ command, description, index = 0 }: CommandItemProp
 			{/* Scan line effect */}
 			<div
 				ref={scanLineRef}
-				className="pointer-events-none absolute right-0 left-0 h-px bg-gradient-to-r from-transparent via-neon to-transparent opacity-0"
+				className="pointer-events-none absolute right-0 left-0 h-px bg-linear-to-r from-transparent via-neon to-transparent opacity-0"
 				style={{ boxShadow: '0 0 20px rgba(0, 255, 136, 0.5)' }}
 			/>
 
@@ -186,8 +186,8 @@ export const CommandItem = ({ command, description, index = 0 }: CommandItemProp
 					className={cn(
 						'h-full w-full transition-all duration-500',
 						isHovered
-							? 'animate-[gradient-y_2s_linear_infinite] bg-gradient-to-b from-neon via-cyber to-neon'
-							: 'bg-gradient-to-b from-neon/30 via-cyber/30 to-neon/30',
+							? 'animate-[gradient-y_2s_linear_infinite] bg-linear-to-b from-neon via-cyber to-neon'
+							: 'bg-linear-to-b from-neon/30 via-cyber/30 to-neon/30',
 					)}
 				/>
 			</div>
@@ -291,7 +291,7 @@ export const CommandItem = ({ command, description, index = 0 }: CommandItemProp
 			{/* Bottom gradient line */}
 			<div
 				className={cn(
-					'absolute right-0 bottom-0 left-0 h-px bg-gradient-to-r from-transparent via-neon/50 to-transparent transition-opacity duration-300',
+					'absolute right-0 bottom-0 left-0 h-px bg-linear-to-r from-transparent via-neon/50 to-transparent transition-opacity duration-300',
 					isHovered ? 'opacity-100' : 'opacity-0',
 				)}
 			/>
