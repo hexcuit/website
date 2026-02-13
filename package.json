@@ -20,7 +20,7 @@
 		"cf-typegen": "wrangler types"
 	},
 	"dependencies": {
-		"@cloudflare/vite-plugin": "1.21.1",
+		"@cloudflare/vite-plugin": "1.24.0",
 		"@fontsource-variable/jetbrains-mono": "5.2.8",
 		"@fontsource-variable/orbitron": "5.2.8",
 		"@fontsource-variable/space-grotesk": "5.2.10",
